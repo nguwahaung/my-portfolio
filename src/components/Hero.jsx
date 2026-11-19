@@ -13,7 +13,7 @@ export function Hero() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
         <Reveal
           as="p"
-          entrance
+          entrance="paint"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -23,7 +23,7 @@ export function Hero() {
         </Reveal>
         <Reveal
           as="h1"
-          entrance
+          entrance="paint"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -34,7 +34,7 @@ export function Hero() {
         </Reveal>
         <Reveal
           as="p"
-          entrance
+          entrance="paint"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -44,7 +44,7 @@ export function Hero() {
           something clear, usable, and shippable.
         </Reveal>
         <Reveal
-          entrance
+          entrance="paint"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.35 }}

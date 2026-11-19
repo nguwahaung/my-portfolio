@@ -14,36 +14,21 @@ import { COLORS } from "@/config/theme";
 const textPrimary = COLORS.textPrimaryHome;
 const textSecondary = COLORS.textSecondary;
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { inherit: true, staggerChildren: 0.08 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 16, scale: 0.96 },
-  show: { opacity: 1, y: 0, scale: 1 },
-};
+const itemEntrance = { opacity: 0, y: 16, scale: 0.96 };
 
 export function OverviewGrid() {
   return (
     <section className="py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal
-          entrance
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-60px" }}
+        <div
           className="focus-reveal grid lg:grid-cols-5 gap-6 md:gap-5"
         >
           <div className="flex flex-col gap-4 md:gap-5 lg:col-span-3 w-full">
             <Reveal
               as="article"
-              entrance
-              variants={item}
+              entrance="paint"
+              initial={itemEntrance}
+              viewport={{ margin: "-60px" }}
               className="rounded-2xl bg-white overflow-hidden flex-1 flex flex-col"
             >
               <div className="relative aspect-6/3 min-h-[150px]">
@@ -92,8 +77,10 @@ export function OverviewGrid() {
             </Reveal>
             <Reveal
               as="article"
-              entrance
-              variants={item}
+              entrance="paint"
+              initial={itemEntrance}
+              transition={{ delay: 0.08 }}
+              viewport={{ margin: "-60px" }}
               className="focus-reveal rounded-2xl bg-white"
             >
               <a
@@ -132,8 +119,10 @@ export function OverviewGrid() {
           <div className="flex flex-col gap-4 md:gap-5 lg:col-span-2 w-full">
             <Reveal
               as="article"
-              entrance
-              variants={item}
+              entrance="paint"
+              initial={itemEntrance}
+              transition={{ delay: 0.16 }}
+              viewport={{ margin: "-60px" }}
               className="rounded-2xl bg-white p-5 md:p-6"
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6">
@@ -155,8 +144,10 @@ export function OverviewGrid() {
 
             <Reveal
               as="article"
-              entrance
-              variants={item}
+              entrance="paint"
+              initial={itemEntrance}
+              transition={{ delay: 0.24 }}
+              viewport={{ margin: "-60px" }}
               className="rounded-2xl bg-white p-5 md:p-6"
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6">
@@ -178,8 +169,10 @@ export function OverviewGrid() {
 
             <Reveal
               as="article"
-              entrance
-              variants={item}
+              entrance="paint"
+              initial={itemEntrance}
+              transition={{ delay: 0.32 }}
+              viewport={{ margin: "-60px" }}
               className="rounded-2xl bg-white p-5 md:p-6"
             >
               <div className="flex gap-2 mb-2 bg-background rounded-full px-3 py-2 w-fit">
@@ -228,7 +221,7 @@ export function OverviewGrid() {
               </div>
             </Reveal>
           </div>
-        </Reveal>
+        </div>
 
         <div className="text-center mt-10">
           <Button

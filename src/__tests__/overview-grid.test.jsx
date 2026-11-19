@@ -17,6 +17,13 @@ describe("OverviewGrid", () => {
     expect(screen.getByText(`Hi, I'm ${SITE.displayName}`)).toBeInTheDocument();
   });
 
+  it("keeps the portrait outside wrappers that can hide it again when React loads", () => {
+    render(<OverviewGrid />);
+    const portrait = screen.getByAltText(SITE.displayName);
+    expect(portrait.closest("article")).toHaveClass("paint-reveal");
+    expect(portrait.closest(".scroll-reveal")).toBeNull();
+  });
+
   it("shows the correct years of experience derived from careerStartYear", () => {
     const expectedYears = new Date().getFullYear() - SITE.careerStartYear;
     render(<OverviewGrid />);

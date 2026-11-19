@@ -122,7 +122,7 @@ export function Header() {
   return (
     <Reveal
       as="header"
-      entrance
+      entrance={isHome ? "paint" : true}
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}

@@ -134,8 +134,35 @@
   transform: none !important;
 }
 
+/* Introductions run once from the first styled paint, even without JavaScript. */
+@keyframes page-entrance {
+  from {
+    opacity: var(--entrance-opacity);
+    transform: translateY(var(--entrance-y)) scale(var(--entrance-scale));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.paint-reveal {
+  animation: page-entrance var(--entrance-duration) ease-out var(--entrance-delay) both;
+}
+
+.paint-reveal[data-entrance-waiting] {
+  animation: none;
+  opacity: var(--entrance-opacity);
+  transform: translateY(var(--entrance-y)) scale(var(--entrance-scale));
+}
+
+.paint-reveal[data-entrance-complete] {
+  animation: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .scroll-reveal {
+  .scroll-reveal,
+  .paint-reveal {
     opacity: 1 !important;
     transform: none !important;
   }
