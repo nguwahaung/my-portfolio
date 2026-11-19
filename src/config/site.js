@@ -39,4 +39,4 @@ export const SOCIAL_LINKS = {
 export const RESUME_URL =
   "https://drive.google.com/file/d/10ca6MgWRG0n2AwIk7yJbKf0tGVFJqzFC/view?usp=sharing";
 
-export const REPOSITORY_URL = "https://github.com/charm91/my-portfolio";
+export const REPOSITORY_URL = "https://github.com/nguwahaung/my-portfolio";

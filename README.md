@@ -24,7 +24,7 @@ Edit static wording in [src/content/templates](src/content/templates), then rege
 
 ## Contributing
 
-This is my personal portfolio of product design work. If something doesn’t work or you have feedback on the case studies, [open an issue](https://github.com/charm91/my-portfolio/issues/new/choose). Pull requests aren’t expected.
+This is my personal portfolio of product design work. If something doesn’t work or you have feedback on the case studies, [open an issue](https://github.com/nguwahaung/my-portfolio/issues/new/choose). Pull requests aren’t expected.
 
 ## License
 
