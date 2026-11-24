@@ -64,7 +64,7 @@ async function fillValidForm(user) {
 
 function expectNoSendFeedback() {
   expect(emailjs.send).not.toHaveBeenCalled();
-  expect(screen.queryByText(/please enter|something went wrong|your message has been sent/i)).not.toBeInTheDocument();
+  expect(screen.queryByText(/please enter|something went wrong|message sent/i)).not.toBeInTheDocument();
 }
 
 describe("Contact form validation", () => {
@@ -119,7 +119,7 @@ describe("Contact form validation", () => {
     await submitForm(user);
     expect(emailjs.send).toHaveBeenCalledTimes(1);
     expect(emailjs.send.mock.calls[0][2].from_name).toBe("A");
-    expect(screen.getByText(/your message has been sent/i)).toBeInTheDocument();
+    expect(screen.getByText(/message sent/i)).toBeInTheDocument();
   });
 
   it("immediately shows error when email is invalid", async () => {
@@ -175,7 +175,7 @@ describe("Contact form validation", () => {
     expect(Date.now()).toBe(0);
     expect(captcha.execute).toHaveBeenCalledTimes(1);
     expect(emailjs.send).toHaveBeenCalledTimes(1);
-    expect(screen.getByText(/your message has been sent/i)).toBeInTheDocument();
+    expect(screen.getByText(/message sent/i)).toBeInTheDocument();
   });
 
   it("calls EmailJS with correct parameters on successful submission", async () => {
@@ -198,8 +198,8 @@ describe("Contact form validation", () => {
     await setField(user, "Email Address", "charm@example.com");
     await setField(user, "Message", "This is a long enough test message");
     await submitForm(user);
-    expect(screen.getByText(/your message has been sent/i)).toBeInTheDocument();
-    expect(screen.getByRole("status")).toHaveTextContent(/your message has been sent/i);
+    expect(screen.getByText(/message sent/i)).toBeInTheDocument();
+    expect(screen.getByRole("status")).toHaveTextContent(/message sent/i);
     expect(screen.getByLabelText("Your Name")).toHaveValue("");
     expect(screen.getByLabelText("Email Address")).toHaveValue("");
     expect(screen.getByLabelText("Message")).toHaveValue("");
@@ -284,7 +284,7 @@ describe("Contact form validation", () => {
     expect(submit).toHaveTextContent("Send Message");
     await act(async () => fireEvent.click(submit));
     expect(emailjs.send).toHaveBeenCalledTimes(2);
-    expect(screen.getByText(/your message has been sent/i)).toBeInTheDocument();
+    expect(screen.getByText(/message sent/i)).toBeInTheDocument();
     expect(screen.getByRole("alert")).toBeEmptyDOMElement();
   });
 
@@ -307,7 +307,7 @@ describe("Contact form validation", () => {
     expect(emailjs.send).toHaveBeenCalledTimes(1);
 
     await act(async () => resolveDelivery({}));
-    expect(screen.getByText(/your message has been sent/i)).toBeInTheDocument();
+    expect(screen.getByText(/message sent/i)).toBeInTheDocument();
     for (const label of ["Your Name", "Email Address", "Message"]) {
       expect(screen.getByLabelText(label)).toBeEnabled();
       expect(screen.getByLabelText(label)).toHaveValue("");
