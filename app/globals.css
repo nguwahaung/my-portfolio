@@ -128,6 +128,16 @@
   z-index: 1;
 }
 
+/* Keep iframe hover messages from reversing Google's badge slide. */
+.contact-recaptcha .grecaptcha-badge[data-style="bottomright"] {
+  /* Google's 256px badge leaves its 70px logo visible when collapsed. */
+  right: -186px !important;
+}
+
+.contact-recaptcha .grecaptcha-badge[data-style="bottomright"]:is(:hover, :focus-within) {
+  right: 0 !important;
+}
+
 /* Scroll effects enhance readable content only after their observer is ready. */
 .scroll-reveal:not([data-reveal-ready]) {
   opacity: 1 !important;

@@ -95,7 +95,7 @@ export const InvisibleRecaptcha = forwardRef(function InvisibleRecaptcha(_, ref)
           finish(new Error("Security verification could not load. Please refresh the page and try again."));
         }}
       />
-      <div ref={container} />
+      <div ref={container} className="contact-recaptcha" />
     </>
   );
 });
