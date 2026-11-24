@@ -365,7 +365,7 @@ export function UniLinksPage() {
             studying abroad.
           </p>
           <p className="mb-4">
-            <b>For mentors,</b> <br /> the platform created an opportunity
+            <b>For mentors,</b> <br /> The platform created an opportunity
             to contribute meaningfully to the student community while
             receiving ethical financial support to help cover living costs
             abroad. Mentors were recognized for their real experience and
