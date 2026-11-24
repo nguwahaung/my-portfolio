@@ -45,7 +45,7 @@ Development output uses `.next-dev`; production build and start use `.next`, so 
 | `app/[case]/page.jsx` | Generates static case routes from the registry; `dynamicParams = false`, unknown cases call `notFound()`. |
 | `app/page.jsx` / `app/portfolio/page.jsx` | Server pages composing homepage sections and the separate portfolio listing. |
 | `src/components/HomeShell.jsx` | Shared header, fixed background layer and main-content landmark for home and portfolio pages. |
-| `src/components/NavigationHistory.jsx` | Tracks known same-tab return points in browser history. Back restores the originating page, position and link focus; direct visits show Home. |
+| `src/components/NavigationHistory.jsx` | Tracks known same-tab return points in browser history. Back restores the originating page, position and link focus; direct visits show Home. Error pages use `main[data-error-page]` so they are skipped as return destinations. |
 | `src/components/CaseStudyShell.jsx` | Shared case-study hero, fixed cover image, content container, author and footer. |
 | `src/components/CaseStudySection.jsx` / `src/views/*.jsx` | Plain content sections and inline case-study prose for Better HR, KBZ Bank, UniLinks and WCT Pay. |
 | `src/config/theme.js` / `src/config/caseStudy.js` | Shared color tokens; case-study token exports and transition/reveal configurations. |
@@ -63,6 +63,7 @@ Development output uses `.next-dev`; production build and start use `.next`, so 
 - Follow Writing’s Reference links workflow. The configured `SITE_URL` and its relative routes are internal; resume hosting, live projects and social sites are external. Keep the explicit opening exceptions below; external arrows indicate the destination, with no opening notices.
 
 - Adding a case study requires its view, a registry entry in `src/config/caseStudies.js`, a card in `src/components/Portfolio.jsx`, a manual entry in `app/sitemap.js` and an updated entry count in `src/__tests__/sitemap.test.js`.
+- Keep sitemap `lastModified` dates stable across builds and cosmetic edits. Update affected pages only for significant content or metadata changes, including shared changes.
 - `SITE_URL` uses `NEXT_PUBLIC_SITE_URL` or defaults to `https://nguwahaung.com`; unset development environments therefore use production metadata URLs.
 - Contact validation trims fields and requires a non-empty name, a valid email shape and a message of at least 10 characters.
 - Contact anti-spam uses EmailJS-verified invisible reCAPTCHA v2, a hidden honeypot and a 30-second cooldown started when a send is attempted, including failed sends.
@@ -74,6 +75,9 @@ Development output uses `.next-dev`; production build and start use `.next`, so 
 - Update personal details, availability, social links and the resume URL in `src/config/site.js` only.
 - Commit directly to `main`. No branches or PRs.
 - Preserve intentional section-specific color differences documented in `src/config/theme.js`.
+- Preserve intentional entrance animations. Never remove or weaken them as a performance optimization; retain reduced-motion support.
+- Keep the five-star ratings on testimonials.
+- Keep contact fields pale and borderless, using `COLORS.inputBg`.
 - Import images from `public/` as modules and use `.src`; do not hard-code root-relative paths, which would lose the content-hashed immutable URLs.
 - External links open in the same tab except LinkedIn, Resume, each case study's Live Project and the case-study author’s Facebook link. Keep their existing new-tab behaviour and meaningful accessible names, without opening notices in visible text, tooltips or accessible descriptions.
 - Keyboard focus uses the global 2px `--ring` outline in `app/globals.css`; do not add per-component focus outlines. Add `focus-inverse` to dark-filled controls so the outline is drawn inside the fill.
@@ -98,8 +102,9 @@ Development output uses `.next-dev`; production build and start use `.next`, so 
 - Header section navigation uses `/?scrollTo=<id>` when leaving another route; keep target section IDs aligned with its navigation items.
 - Legal sources are `app/legal/terms/page.mdx` and `legal/privacy-policy.md`, but package/Next configuration has no MDX integration and neither has a route. Verify routing before treating them as published pages.
 - Vitest resolves `public/` image imports through the plugin in `vitest.config.js`, which returns only `{ src }`; width and height are not available in tests.
-- Use `Reveal` for motion entrances so content stays readable without JavaScript and transitions follow live preferences. Set `entrance` for intentional page introductions; other reveals skip content already on screen at hydration. Keep `focus-reveal` on controls' wrappers for immediate keyboard visibility.
+- Use `Reveal` for motion entrances so content stays readable without JavaScript and transitions follow live preferences. Use `entrance="paint"` for first-paint CSS entrances (header, hero and overview) so hydration does not replay them; boolean `entrance` enables intentional Framer Motion introductions. Other scroll reveals skip content already on screen at hydration. Keep `focus-reveal` on control wrappers for immediate keyboard visibility.
 - Render `InvisibleRecaptcha` outside transformed `motion` containers; a transformed ancestor makes Google's `position: fixed` badge position relative to that ancestor.
+- Keep EmailJS and reCAPTCHA failures visible while fields are edited; clear field-validation feedback only when its affected field is edited or submission is retried.
 - Tailwind 4 resets `<button>` to the default cursor. `app/globals.css` restores `cursor: pointer` on every enabled `button`; clickable elements that are not buttons still need `cursor-pointer`.
 
 ## Rules
@@ -117,4 +122,4 @@ At the start of every session, check whether the paths above exist on this machi
 If either is missing, inform the user: "helm rules are referenced in CLAUDE.md but the
 plugin is not installed on this machine. Install it with: /plugin install agent-helm"
 
-<!-- last-reviewed: f37c10a0b4c2597ca94bb134ec0886b0d18c9415 -->
+<!-- last-reviewed: 14aa90fe4a667ec2038ebe122e96e7a46f113470 -->
