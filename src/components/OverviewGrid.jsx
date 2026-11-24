@@ -31,26 +31,28 @@ export function OverviewGrid() {
               viewport={{ margin: "-60px" }}
               className="rounded-2xl bg-white overflow-hidden flex-1 flex flex-col"
             >
-              <div className="relative aspect-6/3 min-h-[150px]">
-                <Image
-                  src={PROFILE_IMAGE}
-                  alt={SITE.displayName}
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 480px"
-                />
-                <div className="z-10 absolute bottom-1 right-3 max-w-[calc(100%_-_1.5rem)] px-4 py-2 rounded-full text-primary text-sm font-normal text-center bg-background">
+              <div className="relative">
+                <div className="relative aspect-6/3 min-h-[150px]">
+                  <Image
+                    src={PROFILE_IMAGE}
+                    alt={SITE.displayName}
+                    fill
+                    priority
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 480px"
+                  />
+                  <Image
+                    src={cornerWhiteAsset.src}
+                    alt=""
+                    width={200}
+                    height={80}
+                    aria-hidden="true"
+                    className="hidden sm:block absolute -bottom-0.5 right-0 w-1/2 h-20 overflow-visible"
+                  />
+                </div>
+                <div className="z-10 mx-5 mt-4 w-fit max-w-[calc(100%_-_2.5rem)] px-4 py-2 rounded-full text-primary text-sm font-normal text-center bg-background sm:absolute sm:bottom-1 sm:right-3 sm:m-0 sm:max-w-[calc(100%_-_1.5rem)]">
                   {SITE.tagline}
                 </div>
-                <Image
-                  src={cornerWhiteAsset.src}
-                  alt=""
-                  width={200}
-                  height={80}
-                  aria-hidden="true"
-                  className="absolute -bottom-0.5 right-0 w-1/2 h-20 overflow-visible"
-                />
               </div>
               <div className="p-5 md:p-6 flex-1">
                 <h2
