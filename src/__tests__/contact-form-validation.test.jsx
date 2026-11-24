@@ -237,6 +237,16 @@ describe("Contact form validation", () => {
       expect(screen.getByLabelText("Your Name")).toHaveValue("Charm Test");
       expect(screen.getByLabelText("Email Address")).toHaveValue("charm@example.com");
       expect(screen.getByLabelText("Message")).toHaveValue("This is a long enough test message");
+      for (const [label, value] of [
+        ["Your Name", "Updated Name"],
+        ["Email Address", "updated@example.com"],
+        ["Message", "Updated message for delivery"],
+      ]) {
+        fireEvent.change(screen.getByLabelText(label), { target: { value } });
+        expect(screen.getByRole("alert")).toHaveTextContent("Something went wrong. Please try again in a moment.");
+      }
+      expect(captcha.execute).toHaveBeenCalledTimes(1);
+      expect(emailjs.send).toHaveBeenCalledTimes(1);
     } else {
       for (const [label, value] of [
         ["Your Name", "Charm Test"],
@@ -265,6 +275,7 @@ describe("Contact form validation", () => {
     await act(async () => fireEvent.click(submit));
     expect(emailjs.send).toHaveBeenCalledTimes(2);
     expect(screen.getByText(/your message has been sent/i)).toBeInTheDocument();
+    expect(screen.getByRole("alert")).toBeEmptyDOMElement();
   });
 
   it("locks inputs and prevents another button submission while delivery is pending, even after cooldown", async () => {
@@ -319,9 +330,16 @@ describe("Contact form validation", () => {
     expect(screen.getByLabelText("Your Name")).toHaveValue("Charm Test");
     expect(screen.getByRole("button", { name: "Send Message" })).toBeEnabled();
     expect(emailjs.send).not.toHaveBeenCalled();
+    await setField(user, "Your Name", "Updated Name");
+    await setField(user, "Email Address", "updated@example.com");
+    await setField(user, "Message", "Updated message after verification failed");
+    expect(screen.getByRole("alert")).toHaveTextContent(message);
+    expect(captcha.execute).toHaveBeenCalledTimes(1);
+    expect(emailjs.send).not.toHaveBeenCalled();
     await submitForm(user);
     expect(captcha.execute).toHaveBeenCalledTimes(2);
     expect(emailjs.send).toHaveBeenCalledTimes(1);
+    expect(screen.getByRole("alert")).toBeEmptyDOMElement();
   });
 
   it("allows cancelling verification without starting the send cooldown", async () => {

@@ -142,8 +142,8 @@ export default function ContactPageClient() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error feedback as the user corrects their input
-    if (status === "error" && (!invalidField || invalidField === name)) {
+    // Clear field feedback on edit; service failures stay visible until retry.
+    if (status === "error" && invalidField === name) {
       setStatus("idle");
       setErrorMsg("");
       setInvalidField(null);
