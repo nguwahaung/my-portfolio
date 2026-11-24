@@ -73,7 +73,7 @@ export function WctPage() {
           the product more carefully, I realized the issue wasn’t about what
           was missing.
         </p>
-        <p className="mb-4">It was about how everything was connected</p>
+        <p className="mb-4">It was about how everything was connected.</p>
         <p className="mb-4">
           <b>From a user’s perspective,</b> the experience wasn’t one
           journey; it was several disconnected steps. And worse, users had
@@ -126,7 +126,7 @@ export function WctPage() {
         <p className="mb-4">
           The biggest opportunity wasn’t adding anything new. It was
           removing the need for users to think too much. One clear example
-          was how balances were presented, users could see multiple
+          was how balances were presented. Users could see multiple
           currencies and tokens, but that didn’t answer their real question:
         </p>
         <CaseStudyQuote>
@@ -179,7 +179,7 @@ export function WctPage() {
           <li>When they withdraw funds </li>
         </ul>
         <p className="mb-4">
-          These are not just interactions, they are trust moments. <br />
+          These are not just interactions; they are trust moments. <br />
           Instead of optimizing for speed or visual complexity, I made sure
           these moments feel clear, controlled, and intentional.
           <br /> Sometimes that meant simplifying the interface. Sometimes
@@ -288,7 +288,7 @@ export function WctPage() {
           itself; it comes from simplifying how users experience it.
         </p>
         <p>
-          It’s not about removing complexity, It’s about absorbing it into
+          It’s not about removing complexity; it’s about absorbing it into
           the design so users don’t have to.
         </p>
       </Section>
@@ -305,7 +305,7 @@ export function WctPage() {
           </p>
           <p className="mb-4">
             And that’s something I carry forward: Good product design isn’t
-            about adding more.It’s about making everything feel connected,
+            about adding more. It’s about making everything feel connected,
             clear, and reliable.
           </p>
         </CaseStudyReflection>

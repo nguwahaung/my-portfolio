@@ -56,10 +56,11 @@ export function KBZBankPage() {
             Fill in detailed personal, financial, and address information
           </li>
           <li>
-            Provide introducer details (a unique banking requirement){" "}
+            Provide details of an introducer, a person who acts as a
+            reference for the applicant
           </li>
           <li>Select branch and additional services </li>
-          <li>Complete OTP verification and activation</li>
+          <li>Complete one-time password (OTP) verification and activation</li>
         </ul>
         <div className="bg-white my-8">
           <div className="overflow-hidden">

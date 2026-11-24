@@ -93,8 +93,8 @@ export function UniLinksPage() {
           studying a program is actually like.
         </p>
         <p className="mb-4">
-          <b>International students face financial</b> <br />
-          pressure. Many struggle with living costs, have limited work
+          <b>International students face financial pressure.</b> <br />
+          Many struggle with living costs, have limited work
           options, and want to help others, but lack a structured, ethical
           way to do so.
         </p>
