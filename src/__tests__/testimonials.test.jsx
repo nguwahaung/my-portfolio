@@ -4,8 +4,6 @@ import { Testimonials } from "../components/Testimonials";
 
 vi.mock("next/image", async () => (await import("./test-utils/mocks")).nextImageMock);
 
-vi.mock("lucide-react", () => ({ Star: () => <svg /> }));
-
 beforeEach(() => {
   vi.stubGlobal("matchMedia", () => ({
     matches: false,
@@ -32,7 +30,8 @@ describe("Testimonials", () => {
     const authors = ["Zayar Zy", "Thet Maung Chaw", "Zin Thant", "Thiri Aung"];
     cards.forEach((card, index) => {
       expect(within(card).getByRole("img", { name: authors[index] })).toBeInTheDocument();
-      expect(within(card).getByLabelText("5 out of 5 stars")).toBeInTheDocument();
+      const rating = within(card).getByLabelText("5 out of 5 stars");
+      expect(rating.querySelectorAll("svg.lucide-star")).toHaveLength(5);
     });
     expect(within(cards[3]).getByText(/make a positive impact on any team she joins/)).toBeInTheDocument();
   });

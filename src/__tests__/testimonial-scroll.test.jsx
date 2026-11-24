@@ -29,12 +29,16 @@ describe("testimonial scrolling", () => {
     const { container, unmount } = render(<Testimonials />);
     const viewport = viewportFor();
     const track = viewport.firstChild;
-    Object.defineProperty(track, "scrollHeight", { value: 1400 });
+    Object.defineProperty(track, "scrollHeight", { value: 1400, configurable: true });
     act(() => resize());
     expect(viewport.style.height).toBe("800px");
     expect(viewport.style.overflow).toBe("hidden");
     expect(container.firstChild.style.minHeight).toBe("900px");
     expect(observer.observe).toHaveBeenCalledWith(track);
+    // Shortened content must not produce negative travel or section extent.
+    Object.defineProperty(track, "scrollHeight", { value: 500 });
+    act(() => resize());
+    expect(container.firstChild.style.minHeight).toBe("300px");
     unmount();
     expect(observer.disconnect).toHaveBeenCalled();
   });
