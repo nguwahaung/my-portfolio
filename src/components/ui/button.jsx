@@ -22,6 +22,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         navigation: "bg-gray-100 text-[#1f2937] hover:bg-gray-200",
         navigationLink: "bg-transparent text-secondary hover:bg-gray-200",
+        iconNavigation: "border-gray-300 bg-white text-slate-600 shadow-xs hover:bg-gray-100",
         menu: "bg-white text-[#1f2937] hover:bg-[#f3f4f6]",
         chip: "text-[#1f2937]",
       },

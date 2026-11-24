@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { SITE, SOCIAL_LINKS } from "@/config/site";
 import { PROFILE_IMAGE } from "@/config/assets";
+import { Button } from "@/components/ui/button";
 
 const socialLinks = [
   {
@@ -33,27 +34,34 @@ export function CaseStudyAuthor() {
           </div>
         </div>
         <div className="flex shrink-0 items-center gap-3">
-          {socialLinks.map(({ label, href, path }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-slate-500 shadow-xs transition hover:text-slate-600 focus-visible:text-slate-600 focus-visible:outline-2"
-              aria-label={label}
-            >
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-6 w-6"
+          {socialLinks.map(({ label, href, path }) => {
+            const link = (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={label === "Facebook" ? undefined : "flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-slate-500 shadow-xs transition hover:text-slate-600 focus-visible:text-slate-600 focus-visible:outline-2"}
+                aria-label={label}
               >
-                <path d={path} />
-              </svg>
-            </a>
-          ))}
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="size-6"
+                >
+                  <path d={path} />
+                </svg>
+              </a>
+            );
+            return label === "Facebook" ? (
+              <Button key={label} variant="iconNavigation" size="icon-lg" className="size-10 transition-colors duration-150" asChild>
+                {link}
+              </Button>
+            ) : link;
+          })}
         </div>
       </div>
     </div>

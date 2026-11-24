@@ -27,7 +27,8 @@ describe("CaseStudyAuthor", () => {
     expect(link).not.toHaveAttribute("title");
     expect(link).not.toHaveAccessibleDescription();
     expect(link).toHaveAttribute("rel", "noopener noreferrer");
-    expect(link).toHaveClass("focus-visible:outline-2");
+    // LinkedIn retains its existing local treatment until it is migrated.
+    if (label === "LinkedIn") expect(link).toHaveClass("focus-visible:outline-2");
     for (const icon of link.querySelectorAll("svg")) {
       expect(icon).toHaveAttribute("aria-hidden", "true");
       expect(icon).toHaveAttribute("focusable", "false");
