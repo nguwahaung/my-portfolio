@@ -126,7 +126,7 @@ export function Footer() {
           <div className="flex justify-center sm:justify-end gap-2">
             <Button
               variant="menu"
-              className="h-auto gap-1.5 rounded-full border-0 bg-transparent px-4 py-1.5 text-sm font-normal text-secondary transition-colors duration-150"
+              className="h-auto gap-1.5 rounded-full border-0 bg-transparent px-4 py-1.5 text-sm font-normal text-secondary transition-colors duration-150 hover:bg-gray-200"
               asChild
             >
               <a
