@@ -16,7 +16,7 @@ const bgPage = COLORS.bgPageContact;
 const inputBg = COLORS.inputBg;
 
 const fieldClass = cn(
-  "w-full rounded-xl border border-[#6b7280] px-4 py-3 text-base transition-colors duration-150",
+  "w-full rounded-xl border-0 px-4 py-3 text-base transition-colors duration-150",
   "placeholder:text-[#6b7280]",
   "aria-invalid:outline-2 aria-invalid:outline-red-600",
   "disabled:opacity-60 disabled:cursor-not-allowed",
