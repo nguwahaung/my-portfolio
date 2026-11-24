@@ -58,7 +58,9 @@ export function Testimonials() {
   const [scrollEnabled, setScrollEnabled] = useState(false);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"],
+    // Keep the first quote intact at the section link's landing position,
+    // then finish the travel while the last card is still comfortably on screen.
+    offset: ["start start", "end 50%"],
   });
   const y = useTransform(
     scrollYProgress,
