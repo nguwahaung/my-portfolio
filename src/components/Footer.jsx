@@ -9,6 +9,7 @@ import { COLORS } from "@/config/theme";
 
 const textPrimary = COLORS.textPrimary;
 const textSecondary = COLORS.textSecondary;
+const footerLinkClass = "h-auto gap-1.5 rounded-full border-0 px-4 py-1.5 text-sm font-normal transition-colors duration-150";
 
 function ContactCard({ icon: Icon, heading, description, ...linkProps }) {
   const destination = new URL(linkProps.href, SITE_URL);
@@ -125,8 +126,8 @@ export function Footer() {
           </p>
           <div className="flex justify-center sm:justify-end gap-2">
             <Button
-              variant="menu"
-              className="h-auto gap-1.5 rounded-full border-0 bg-transparent px-4 py-1.5 text-sm font-normal text-secondary transition-colors duration-150 hover:bg-gray-200"
+              variant="navigationLink"
+              className={footerLinkClass}
               asChild
             >
               <a
@@ -139,12 +140,9 @@ export function Footer() {
                 <ExternalLink className="size-3.5" aria-hidden="true" />
               </a>
             </Button>
-            <Link
-              href="/#portfolio"
-              className="focus-inverse text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-secondary focus-visible:text-white px-4 py-1.5 rounded-full"
-            >
-              Case Studies
-            </Link>
+            <Button variant="navigationLink" className={footerLinkClass} asChild>
+              <Link href="/#portfolio">Case Studies</Link>
+            </Button>
           </div>
         </Reveal>
       </div>
