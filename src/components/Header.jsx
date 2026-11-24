@@ -158,17 +158,18 @@ export function Header() {
           }}
         >
           {isHome ? (
-            <button
+            <Button
               type="button"
+              variant="navigation"
               ref={menuTrigger}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
               aria-controls={menuId}
               onClick={() => setMenuOpen((o) => !o)}
-              className={cn(pillControl, "transition-colors duration-150 text-[#1f2937]")}
+              className="h-auto gap-0 rounded-full border-0 px-5 py-2 transition-colors duration-150"
             >
               Menu
-            </button>
+            </Button>
           ) : navigation?.previous ? (
             <Button
               type="button"
