@@ -227,10 +227,10 @@ export function OverviewGrid() {
 
         <div className="text-center mt-10">
           <Button
-            variant="outline"
+            variant="iconNavigation"
             size="icon-lg"
             aria-label="Scroll down"
-            className="rounded-full bg-white border-0 shadow-sm size-10"
+            className="rounded-full border-0 shadow-sm size-10 transition-colors duration-150"
             asChild
           >
             <a href="#services">
