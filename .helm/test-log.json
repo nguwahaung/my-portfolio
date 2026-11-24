@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
-  "assessed_commit": "456dc0aa3a9f99e8b8d2a38f640efdfe9c8a3562",
-  "full_scan_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f",
+  "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842",
+  "full_scan_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842",
   "cases": [
     {
       "id": "g-013ef1a4-cbe4-4473-9292-8ea9b76e2a69",
@@ -19,43 +19,28 @@
       "action": "add",
       "layer": "unit",
       "state": "open",
-      "assessed_commit": "1f8014fed1fda07b730867b060691a20312e4bf7"
+      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842"
     },
     {
       "id": "g-2fa872bd-a832-416f-ad34-8531a525ccfe",
       "expected": "ResizeObserver recomputes clipped testimonial overflow, clamps short content to zero, disconnects on cleanup; measurement wiring only, no visual claim.",
       "basis": [
         "src/components/Testimonials.jsx (static code evidence; intended behavior inferred from implementation)",
-        "src/__tests__/testimonials.test.jsx (existing assertions inspected)"
+        "src/__tests__/testimonial-scroll.test.jsx (resize, clipping and cleanup assertions inspected)"
       ],
       "paths": [
         "src/components/Testimonials.jsx",
-        "src/__tests__/testimonials.test.jsx"
+        "src/__tests__/testimonial-scroll.test.jsx"
       ],
       "priority": "medium",
-      "reason": "Testimonials mocks never deliver ResizeObserver callbacks; stale measurement can clip later content.",
+      "reason": "Current resize coverage checks overflowing content only; removing the zero clamp would allow negative travel for short content without failing a test.",
       "action": "improve",
       "layer": "component integration",
-      "state": "resolved",
-      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "state": "open",
+      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842",
       "tests": [
-        "src/__tests__/testimonials.test.jsx::recomputes scroll bounds and section extent when the testimonial content resizes",
-        "src/__tests__/testimonials.test.jsx::clamps %ipx content to zero overflow instead of reversing its travel",
-        "src/__tests__/testimonials.test.jsx::disconnects its content observer on unmount"
-      ],
-      "closure": {
-        "reason": "tested",
-        "refs": [
-          "src/__tests__/testimonials.test.jsx::recomputes scroll bounds and section extent when the testimonial content resizes",
-          "src/__tests__/testimonials.test.jsx::clamps %ipx content to zero overflow instead of reversing its travel",
-          "src/__tests__/testimonials.test.jsx::disconnects its content observer on unmount"
-        ],
-        "method": "runtime",
-        "outcome": "21 tests passed in 4 files. Preserved existing render/visibility/reveal/collapse guarantees and verified named card destinations, single-open keyboard disclosure, resize bounds/cleanup and social hrefs.",
-        "commit": "e2f98d02c2937f2cc874448e091e8fc917bd1354",
-        "command": "npm test -- src/__tests__/portfolio.test.jsx src/__tests__/faq.test.jsx src/__tests__/testimonials.test.jsx src/__tests__/case-study-author.test.jsx",
-        "scope": "Portfolio with real Button, FAQ with real Radix accordion, Testimonials synthetic ResizeObserver measurements, author links in Vitest/jsdom; no visual/browser certification."
-      }
+        "src/__tests__/testimonial-scroll.test.jsx::restores the desktop viewport and measures the full content travel"
+      ]
     },
     {
       "id": "g-319cc0b0-d064-41f0-889a-3563aa6680a6",
@@ -98,6 +83,18 @@
         "command": "npm test -- src/__tests__/contact-form-validation.test.jsx",
         "scope": "Contact form component in Vitest/jsdom; EmailJS mocked; Date and bounded scheduled-timer fixtures."
       }
+    },
+    {
+      "id": "g-3318885f-9fec-49ea-8c09-8e390e46d7c2",
+      "expected": "Remove the duplicate sitemap slug-inventory case while retaining correct project destinations and route-to-sitemap integration coverage.",
+      "basis": ["src/__tests__/sitemap.test.js::includes all 4 case study slugs", "src/__tests__/case-study-routes.test.jsx::connects every visible case card to a generated route and sitemap entry", "src/__tests__/portfolio.test.jsx::each card links to the correct slug"],
+      "paths": ["src/__tests__/sitemap.test.js", "src/__tests__/case-study-routes.test.jsx", "src/__tests__/portfolio.test.jsx"],
+      "priority": "low",
+      "reason": "The remaining named card destinations and integration assertions already require all four sitemap URLs at the same test layer.",
+      "action": "remove",
+      "layer": "unit",
+      "state": "open",
+      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842"
     },
     {
       "id": "g-3b09eb7f-617f-42e3-b92d-728e258d73d6",
@@ -183,18 +180,37 @@
         "app/not-found.jsx"
       ],
       "priority": "low",
-      "reason": "Only the main landmark of the 404 page is tested; its recovery link is unprotected, a minor dead-end risk.",
+      "reason": "Obsolete: the recovery action now leads to the portfolio rather than the historical Return to home destination.",
       "action": "add",
       "layer": "unit",
       "id": "g-47352892-2466-473f-a64e-7c11e8971751",
-      "state": "open",
-      "assessed_commit": "456dc0aa3a9f99e8b8d2a38f640efdfe9c8a3562",
+      "state": "obsolete",
+      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842",
+      "closure": {
+        "reason": "obsolete",
+        "refs": ["app/not-found.jsx"],
+        "method": "static",
+        "outcome": "The current recovery action is View case studies to /portfolio; the historical Return to home contract no longer applies. No production change or runtime claim.",
+        "commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842"
+      },
       "decision": {
         "type": "deferred",
         "note": "Owner accepted the recommendation to skip a test for the 404 Return to home link: the component is a single static link and its main landmark is already tested. Revisit if the page gains logic.",
         "date": "2026-11-13",
         "commit": "8f3ae17d59b6f7d64183786bbdb1caa5a25696a9"
       }
+    },
+    {
+      "id": "g-4d7ba5cf-85c0-48e8-8687-c40bde3b191c",
+      "expected": "Remove the duplicate plain class-joining case while preserving falsy filtering, string preservation and Tailwind conflict resolution.",
+      "basis": ["src/__tests__/utils.test.js::merges class names", "src/__tests__/utils.test.js::drops falsy values", "src/__tests__/utils.test.js::resolves Tailwind conflicts — last class wins"],
+      "paths": ["src/lib/utils.js", "src/__tests__/utils.test.js"],
+      "priority": "low",
+      "reason": "The falsy-input case already asserts that both ordinary class strings survive in order; the separate two-string case adds no distinct required guarantee.",
+      "action": "remove",
+      "layer": "unit",
+      "state": "open",
+      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842"
     },
     {
       "id": "g-76988325-e6b1-4d48-a737-cf79557e5c0a",
@@ -420,7 +436,7 @@
       "action": "add",
       "layer": "integration",
       "state": "open",
-      "assessed_commit": "1f8014fed1fda07b730867b060691a20312e4bf7"
+      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842"
     },
     {
       "id": "g-a5b76e0c-0512-40a5-bd4a-1950e03691bf",
@@ -468,11 +484,18 @@
         "src/__tests__/contact-form-validation.test.jsx"
       ],
       "priority": "low",
-      "reason": "The hint's link to the field in the no-error state is unasserted; minor accessibility regression risk.",
+      "reason": "Obsolete: the owner intentionally removed the visible hint; field-validation errors remain required and tested.",
       "action": "improve",
       "layer": "unit",
-      "state": "open",
-      "assessed_commit": "1f8014fed1fda07b730867b060691a20312e4bf7"
+      "state": "obsolete",
+      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842",
+      "closure": {
+        "reason": "obsolete",
+        "refs": ["Owner instruction: remove At least 10 characters from the contact form", "app/contact-me/ContactPageClient.jsx"],
+        "method": "static",
+        "outcome": "The owner intentionally removed the visible hint; validation feedback remains tested. Its no-error hint association is no longer a contract.",
+        "commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842"
+      }
     },
     {
       "id": "g-a6d43b22-e1e6-410b-948a-ef742fdb01f5",
@@ -511,6 +534,30 @@
         "command": "npm test -- src/__tests__/portfolio.test.jsx src/__tests__/faq.test.jsx src/__tests__/testimonials.test.jsx src/__tests__/case-study-author.test.jsx",
         "scope": "Portfolio with real Button, FAQ with real Radix accordion, Testimonials synthetic ResizeObserver measurements, author links in Vitest/jsdom; no visual/browser certification."
       }
+    },
+    {
+      "id": "g-ab5a01f1-a972-4f39-bb31-e60efb9047ca",
+      "expected": "Each testimonial renders five actual star icons as well as its accessible five-star label.",
+      "basis": ["AGENTS.md: keep the five-star ratings on testimonials", "src/__tests__/testimonials.test.jsx::renders every complete quote and author in a readable card"],
+      "paths": ["src/components/Testimonials.jsx", "src/__tests__/testimonials.test.jsx"],
+      "priority": "low",
+      "reason": "The label-only assertion passes if all rendered Star children are removed.",
+      "action": "improve",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842"
+    },
+    {
+      "id": "g-acf1a33b-88fa-4783-97de-3187b90282da",
+      "expected": "Reject a nine-character trimmed message, accept exactly ten characters, and send trimmed email and message values to EmailJS.",
+      "basis": ["AGENTS.md Contact validation", "app/contact-me/ContactPageClient.jsx validation and EmailJS payload", "src/__tests__/contact-form-validation.test.jsx message rejection and provider-payload cases"],
+      "paths": ["app/contact-me/ContactPageClient.jsx", "src/__tests__/contact-form-validation.test.jsx"],
+      "priority": "medium",
+      "reason": "Existing five-character rejection and long unpadded success fixtures miss off-by-one and trim regressions.",
+      "action": "improve",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842"
     },
     {
       "id": "g-b12c1173-814f-47af-9c94-274ddca7cb18",
@@ -669,7 +716,7 @@
       }
     },
     {
-      "expected": "The layout's skip link targets #main-content and each page shell (HomeShell, CaseStudyShell, contact page) renders exactly one main element with that id.",
+      "expected": "The layout skip link targets #main-content; each home, case-study, contact and not-found shell renders exactly one main overall, carrying that id.",
       "basis": [
         "app/layout.jsx skip link href=\"#main-content\"",
         "src/components/HomeShell.jsx, src/components/CaseStudyShell.jsx and app/contact-me/ContactPageClient.jsx define id=\"main-content\" (static code evidence; intended behavior inferred from implementation)"
@@ -681,28 +728,16 @@
         "app/contact-me/ContactPageClient.jsx"
       ],
       "priority": "medium",
-      "reason": "The skip link and its targets live in four files with no test linking them; a shell refactor could remove keyboard bypass without any failing test.",
-      "action": "add",
+      "reason": "Current assertions count only #main-content; an additional main without that ID violates the single-landmark contract without failing.",
+      "action": "improve",
       "layer": "integration",
       "id": "g-bd508a0b-0673-4c0d-9612-4b1186de888a",
-      "state": "resolved",
-      "assessed_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f",
+      "state": "open",
+      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842",
       "tests": [
         "src/__tests__/skip-link.test.jsx::targets #main-content",
         "src/__tests__/skip-link.test.jsx::has exactly one #main-content landmark on %s"
-      ],
-      "closure": {
-        "reason": "tested",
-        "refs": [
-          "src/__tests__/skip-link.test.jsx::targets #main-content",
-          "src/__tests__/skip-link.test.jsx::has exactly one #main-content landmark on %s"
-        ],
-        "method": "runtime",
-        "outcome": "The layout skip link targets #main-content and the home, case-study and contact shells each render exactly one main with that id. Renaming the HomeShell id and the skip link target each made a check fail, then the source was restored.",
-        "commit": "87a7856778dcd6fe24d670e58cc3af9f422fbb1d",
-        "command": "npx vitest run src/__tests__/skip-link.test.jsx",
-        "scope": "jsdom Vitest 4.1.10 on Node 24.21.0; full suite npm test on the final tree: 24 files, 135 tests passed; npm run lint: 0 errors"
-      }
+      ]
     },
     {
       "id": "g-c208a501-6517-4238-8762-75c5e3e46cb1",
