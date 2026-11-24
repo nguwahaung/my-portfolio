@@ -34,14 +34,12 @@ export function CaseStudyAuthor() {
           </div>
         </div>
         <div className="flex shrink-0 items-center gap-3">
-          {socialLinks.map(({ label, href, path }) => {
-            const link = (
+          {socialLinks.map(({ label, href, path }) => (
+            <Button key={label} variant="iconNavigation" size="icon-lg" className="size-10 transition-colors duration-150" asChild>
               <a
-                key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={label === "Facebook" ? undefined : "flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-slate-500 shadow-xs transition hover:text-slate-600 focus-visible:text-slate-600 focus-visible:outline-2"}
                 aria-label={label}
               >
                 <svg
@@ -55,13 +53,8 @@ export function CaseStudyAuthor() {
                   <path d={path} />
                 </svg>
               </a>
-            );
-            return label === "Facebook" ? (
-              <Button key={label} variant="iconNavigation" size="icon-lg" className="size-10 transition-colors duration-150" asChild>
-                {link}
-              </Button>
-            ) : link;
-          })}
+            </Button>
+          ))}
         </div>
       </div>
     </div>
