@@ -286,7 +286,7 @@ export default function ContactPageClient() {
             <textarea
               id="contact-message"
               aria-invalid={invalidField === "message" || undefined}
-              aria-describedby={`contact-message-hint${invalidField === "message" ? " contact-form-error" : ""}`}
+              aria-describedby={invalidField === "message" ? "contact-form-error" : undefined}
               name="message"
               required
               rows={5}
@@ -297,9 +297,6 @@ export default function ContactPageClient() {
               className={cn("min-h-[120px] resize-y", fieldClass)}
               style={fieldStyle}
             />
-            <p id="contact-message-hint" className="mt-2 text-sm" style={{ color: textSecondary }}>
-              At least 10 characters.
-            </p>
           </div>
 
           <div role="status" aria-live="polite" aria-atomic="true">

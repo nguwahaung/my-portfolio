@@ -133,7 +133,7 @@ describe("Contact form validation", () => {
     expect(screen.getByText("Write at least 10 characters in your message.")).toBeInTheDocument();
     expect(screen.getByLabelText("Message")).toHaveFocus();
     expect(screen.getByLabelText("Message")).toHaveAttribute("aria-invalid", "true");
-    expect(screen.getByLabelText("Message")).toHaveAccessibleDescription("At least 10 characters. Write at least 10 characters in your message.");
+    expect(screen.getByLabelText("Message")).toHaveAccessibleDescription("Write at least 10 characters in your message.");
   });
 
   it("clears error when user corrects input after a validation failure", async () => {
