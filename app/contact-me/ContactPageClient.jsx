@@ -337,13 +337,14 @@ export default function ContactPageClient() {
             )}
           </Button>
           {status === "verifying" && (
-            <button
+            <Button
               type="button"
-              className="mt-3 w-full rounded-full py-2 text-sm underline"
+              variant="textAction"
+              className="mt-3 h-auto w-full rounded-full border-0 px-0 py-2 text-sm font-normal"
               onClick={() => recaptcha.current.cancel()}
             >
               Cancel verification
-            </button>
+            </Button>
           )}
         </Reveal>
       </main>
