@@ -323,7 +323,7 @@ export default function ContactPageClient() {
             type="submit"
             size="lg"
             disabled={isDisabled}
-            className="h-11 w-full rounded-full bg-[#1f2937] text-base font-medium text-white hover:bg-[#111827]"
+            className="h-11 w-full rounded-full text-base font-medium"
           >
             {isBusy ? (
               <span className="flex items-center justify-center gap-2">
