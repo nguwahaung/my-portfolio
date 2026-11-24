@@ -68,8 +68,8 @@ export default function ContactPageClient() {
       e.currentTarget.elements.namedItem(field)?.focus();
     };
 
-    if (name.length < 2) {
-      showFieldError("name", "Use at least 2 characters for your name.");
+    if (!name) {
+      showFieldError("name", "Please enter your name.");
       return;
     }
     if (!EMAIL_RE.test(email)) {

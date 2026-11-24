@@ -99,17 +99,27 @@ describe("Contact form validation", () => {
     expect(screen.getByTestId("captcha-container").closest("form, main")).toBeNull();
   });
 
-  it("immediately shows error when name is too short", async () => {
+  it.each(["", "   "])("shows a name error only for blank input (%j)", async (name) => {
     render(<ContactPageClient />);
-    await setField(user, "Your Name", "A");
+    fireEvent.change(screen.getByLabelText("Your Name"), { target: { value: name } });
     await setField(user, "Email Address", "valid@example.com");
     await setField(user, "Message", "Long enough message here");
     await submitForm(user);
-    expect(screen.getByText("Use at least 2 characters for your name.")).toBeInTheDocument();
-    expect(screen.getByRole("alert")).toHaveTextContent("Use at least 2 characters for your name.");
+    expect(screen.getByText("Please enter your name.")).toBeInTheDocument();
+    expect(screen.getByRole("alert")).toHaveTextContent("Please enter your name.");
     expect(screen.getByLabelText("Your Name")).toHaveFocus();
     expect(screen.getByLabelText("Your Name")).toHaveAttribute("aria-invalid", "true");
-    expect(screen.getByLabelText("Your Name")).toHaveAccessibleDescription("Use at least 2 characters for your name.");
+    expect(screen.getByLabelText("Your Name")).toHaveAccessibleDescription("Please enter your name.");
+  });
+
+  it("accepts a single-character name", async () => {
+    render(<ContactPageClient />);
+    await fillValidForm(user);
+    await setField(user, "Your Name", " A ");
+    await submitForm(user);
+    expect(emailjs.send).toHaveBeenCalledTimes(1);
+    expect(emailjs.send.mock.calls[0][2].from_name).toBe("A");
+    expect(screen.getByText(/your message has been sent/i)).toBeInTheDocument();
   });
 
   it("immediately shows error when email is invalid", async () => {
@@ -138,16 +148,16 @@ describe("Contact form validation", () => {
 
   it("clears error when user corrects input after a validation failure", async () => {
     render(<ContactPageClient />);
-    await setField(user, "Your Name", "A");
+    await setField(user, "Your Name", "   ");
     await setField(user, "Email Address", "valid@example.com");
     await setField(user, "Message", "Long enough message here");
     await submitForm(user);
-    expect(screen.getByText("Use at least 2 characters for your name.")).toBeInTheDocument();
+    expect(screen.getByText("Please enter your name.")).toBeInTheDocument();
     await setField(user, "Email Address", "updated@example.com");
     expect(screen.getByLabelText("Your Name")).toHaveAttribute("aria-invalid", "true");
-    expect(screen.getByText("Use at least 2 characters for your name.")).toBeInTheDocument();
+    expect(screen.getByText("Please enter your name.")).toBeInTheDocument();
     await setField(user, "Your Name", "Charm");
-    expect(screen.queryByText("Use at least 2 characters for your name.")).not.toBeInTheDocument();
+    expect(screen.queryByText("Please enter your name.")).not.toBeInTheDocument();
     expect(screen.getByLabelText("Your Name")).not.toHaveAttribute("aria-invalid");
     expect(screen.getByLabelText("Your Name")).not.toHaveAttribute("aria-describedby");
   });
@@ -207,9 +217,9 @@ describe("Contact form validation", () => {
 
   it("does not start a cooldown for validation errors", async () => {
     render(<ContactPageClient />);
-    await setField(user, "Your Name", "A");
+    await setField(user, "Your Name", "   ");
     await submitForm(user);
-    expect(screen.getByText("Use at least 2 characters for your name.")).toBeInTheDocument();
+    expect(screen.getByText("Please enter your name.")).toBeInTheDocument();
     expect(emailjs.send).not.toHaveBeenCalled();
     expect(screen.getByRole("button", { name: /send message/i })).toBeEnabled();
 

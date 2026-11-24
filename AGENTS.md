@@ -64,7 +64,7 @@ Development output uses `.next-dev`; production build and start use `.next`, so 
 
 - Adding a case study requires its view, a registry entry in `src/config/caseStudies.js`, a card in `src/components/Portfolio.jsx`, a manual entry in `app/sitemap.js` and an updated entry count in `src/__tests__/sitemap.test.js`.
 - `SITE_URL` uses `NEXT_PUBLIC_SITE_URL` or defaults to `https://nguwahaung.com`; unset development environments therefore use production metadata URLs.
-- Contact validation trims fields and requires a name of at least 2 characters, a valid email shape and a message of at least 10 characters.
+- Contact validation trims fields and requires a non-empty name, a valid email shape and a message of at least 10 characters.
 - Contact anti-spam uses EmailJS-verified invisible reCAPTCHA v2, a hidden honeypot and a 30-second cooldown started when a send is attempted, including failed sends.
 - EmailJS service/template/public-key values and the reCAPTCHA site key in `src/components/InvisibleRecaptcha.jsx` are intentionally hardcoded in client code, not environment variables. The reCAPTCHA secret is stored only in EmailJS.
 
