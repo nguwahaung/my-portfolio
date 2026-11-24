@@ -61,5 +61,6 @@ describe("Skip link", () => {
     const targets = container.querySelectorAll("#main-content");
     expect(targets).toHaveLength(1);
     expect(targets[0].tagName).toBe("MAIN");
+    expect(container.querySelectorAll("main")).toHaveLength(1);
   });
 });
