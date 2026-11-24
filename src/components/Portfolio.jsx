@@ -11,12 +11,18 @@ import Link from "next/link";
 import { Reveal, fadeUp } from "@/components/Reveal";
 import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 const kbzBankImage = kbzAsset.src;
 const uniLinksImage = unilinksAsset.src;
 const betterhrImage = betterAsset.src;
 const wctImage = wctAsset.src;
+
+const projectCardStyles = {
+  card: "focus-reveal rounded-3xl bg-card hover:shadow-xs focus-within:shadow-xs transition-shadow duration-300",
+  image: "object-cover transition-transform duration-500 motion-safe:group-hover:scale-105 motion-safe:group-focus-visible:scale-105",
+  arrow: "size-5 transition-transform duration-200 motion-safe:group-hover:rotate-330 motion-safe:group-focus-visible:rotate-330",
+  title: "min-w-0 font-medium text-foreground group-hover:text-primary transition-colors sm:line-clamp-2 text-left text-base",
+};
 
 const projects = [
   {
@@ -24,7 +30,6 @@ const projects = [
     category: "Web + Mobile Apps",
     image: betterhrImage,
     href: "/betterhr",
-    shadowOnly: true,
   },
   {
     title: "UniLinks All-in-One Study Abroad Platform",
@@ -82,12 +87,7 @@ export function Portfolio() {
                 delay: 0.05 * index,
               }}
               key={project.href}
-              className={cn(
-                "focus-reveal rounded-3xl bg-card transition-shadow",
-                project.shadowOnly
-                  ? "hover:shadow-md focus-within:shadow-md duration-150"
-                  : "hover:shadow-xs focus-within:shadow-xs duration-300",
-              )}
+              className={projectCardStyles.card}
             >
               <Link href={project.href} className="group block rounded-3xl p-2">
                 <div className="aspect-4/3 overflow-hidden rounded-3xl relative">
@@ -95,7 +95,7 @@ export function Portfolio() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    className={cn("object-cover", !project.shadowOnly && "transition-transform duration-500 motion-safe:group-hover:scale-105 motion-safe:group-focus-visible:scale-105")}
+                    className={projectCardStyles.image}
                     sizes="(max-width: 640px) 100vw, 480px"
                   />
                   <Image
@@ -109,18 +109,15 @@ export function Portfolio() {
                   <span
                     className={buttonVariants({
                       size: "lg", variant: "outline",
-                      className: cn(
-                        "mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary bg-[#f6f7f9] rounded-full absolute bottom-2 right-5 border-0",
-                        project.shadowOnly && "hover:bg-[#f6f7f9] hover:text-primary",
-                      ),
+                      className: "mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary bg-[#f6f7f9] rounded-full absolute bottom-2 right-5 border-0",
                     })}
                   >
                     See Details
-                    <ArrowRight className={cn("size-5", !project.shadowOnly && "transition-transform duration-200 motion-safe:group-hover:rotate-330 motion-safe:group-focus-visible:rotate-330")} />
+                    <ArrowRight className={projectCardStyles.arrow} />
                   </span>
                 </div>
                 <div className="p-6 flex flex-col items-start gap-2 sm:flex-row sm:justify-between sm:items-baseline sm:gap-6">
-                  <h3 className={cn("min-w-0 font-medium text-foreground sm:line-clamp-2 text-left text-base", !project.shadowOnly && "group-hover:text-primary transition-colors")}>
+                  <h3 className={projectCardStyles.title}>
                     {project.title}
                   </h3>
                   <p className="text-sm text-foreground text-left sm:text-right shrink-0">
