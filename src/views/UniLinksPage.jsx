@@ -149,7 +149,7 @@ export function UniLinksPage() {
         </p>
         <div className="rounded-lg border border-gray-200 bg-white p-2 shadow-xs my-8">
           <div className="grid grid-cols-1 gap-1 md:grid-cols-2">
-            <div className="hidden md:block overflow-hidden rounded-sm">
+            <div className="overflow-hidden rounded-sm">
               <Image
                 src={unilinksFlow3Asset.src}
                 alt="UniLinks account authentication workflow with sign-in and verification decisions"
