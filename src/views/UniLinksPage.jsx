@@ -269,7 +269,7 @@ export function UniLinksPage() {
         </div>
       </Section>
       <Section title="End-to-End Flow (How It Works)">
-        <ul className="list-decimal pl-5 space-y-1">
+        <ol className="list-decimal pl-5 space-y-1">
           <li>Student discovers programs on UniLinks </li>
           <li>Student reviews full curriculum & compares options </li>
           <li>
@@ -279,7 +279,7 @@ export function UniLinksPage() {
           <li>UniLinks admin supports and verifies the process </li>
           <li>Student successfully passes admission</li>
           <li>Mentor receives contribution bonus </li>
-        </ul>
+        </ol>
         <CaseStudyQuote>
           No education agency involved! No hidden fees! A true
           student-to-student journey.
@@ -365,7 +365,7 @@ export function UniLinksPage() {
             studying abroad.
           </p>
           <p className="mb-4">
-            <b>For mentors,</b> <br /> The platform created an opportunity
+            <b>For mentors,</b> <br /> the platform created an opportunity
             to contribute meaningfully to the student community while
             receiving ethical financial support to help cover living costs
             abroad. Mentors were recognized for their real experience and
