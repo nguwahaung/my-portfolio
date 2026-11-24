@@ -3,6 +3,7 @@
 import { Reveal } from "@/components/Reveal";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CaseStudyAuthor } from "@/components/CaseStudyAuthor";
@@ -73,16 +74,21 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
             ))}
           </div>
           <div className="flex justify-center mt-8 mb-4">
-            <a
-              href={liveUrl}
-              target="_blank"
-              aria-label="Live Project"
-              rel="noopener noreferrer"
-              className="focus-inverse inline-flex items-center gap-2 rounded-3xl bg-[#1f2937] px-5 py-2.5 font-medium text-white transition-colors duration-200 hover:bg-[#111827] focus-visible:bg-secondary"
+            <Button
+              size="lg"
+              className="rounded-full text-white font-medium px-8"
+              asChild
             >
-              <span>Live Project</span>
-              <ExternalLink className="size-5" aria-hidden="true" />
-            </a>
+              <a
+                href={liveUrl}
+                target="_blank"
+                aria-label="Live Project"
+                rel="noopener noreferrer"
+              >
+                <span>Live Project</span>
+                <ExternalLink className="size-5" aria-hidden="true" />
+              </a>
+            </Button>
           </div>
           <Reveal entrance {...scrollReveal} className="mt-10">
             <div className="rounded-2xl overflow-hidden">
