@@ -222,8 +222,8 @@ export function Header() {
                   })}
                 </nav>
                 <Button
-                  variant="chip"
-                  className="w-full justify-start rounded-full py-5 px-4 text-sm font-medium bg-white hover:bg-[#f3f4f6]"
+                  variant="menu"
+                  className="w-full justify-start rounded-full py-5 px-4 text-sm font-medium"
                   size="sm"
                   asChild
                 >
