@@ -61,13 +61,13 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
             {title}
           </h1>
           <div className="flex flex-col items-center gap-2 sm:flex-row sm:flex-wrap sm:justify-center">
-            {tags.map(({ icon: Icon, label }) => (
+            {tags.map(({ icon, label }) => (
               <span
                 key={label}
                 className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 text-xs font-medium"
                 style={{ color: textPrimary }}
               >
-                <Icon className="size-4" />
+                {icon}
                 {label}
               </span>
             ))}

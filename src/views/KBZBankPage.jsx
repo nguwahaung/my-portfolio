@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import kCoverAsset from "../../public/k-cover.png";
 import kbzThumbnailAsset from "../../public/kbz/thumbnail.png";
@@ -21,9 +19,9 @@ export function KBZBankPage() {
       coverImage={kCoverAsset.src}
       title="KBZ Bank Digital Banking Authentication System"
       tags={[
-        { icon: TabletSmartphone, label: "Web App" },
-        { icon: Globe, label: "Fintech / Digital Banking" },
-        { icon: Clock, label: "Scale phase" },
+        { icon: <TabletSmartphone className="size-4" />, label: "Web App" },
+        { icon: <Globe className="size-4" />, label: "Fintech / Digital Banking" },
+        { icon: <Clock className="size-4" />, label: "Scale phase" },
       ]}
       liveUrl="https://selfservice.kbzbank.com/"
       thumbnail={{ src: kbzThumbnailAsset.src, width: 1492, height: 1028 }}

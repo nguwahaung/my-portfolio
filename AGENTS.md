@@ -70,7 +70,7 @@ Development output uses `.next-dev`; production build and start use `.next`, so 
 
 ## Behavior Rules
 
-- Edit homepage copy in its section component and case-study prose directly in `src/views/*.jsx`; there is no CMS.
+- Edit homepage copy in its section component and case-study prose directly in `src/views/*.jsx`; there is no CMS. Keep case-study views as Server Components so their prose stays out of browser JavaScript; pass rendered tag icons to the animated client shell.
 - Update personal details, availability, social links and the resume URL in `src/config/site.js` only.
 - Commit directly to `main`. No branches or PRs.
 - Preserve intentional section-specific color differences documented in `src/config/theme.js`.

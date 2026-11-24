@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import bCoverAsset from "../../public/b-cover.png";
 import betterhrThumbnailAsset from "../../public/betterhr/thumbnail.png";
@@ -23,9 +21,9 @@ export function BetterHRPage() {
       coverImage={bCoverAsset.src}
       title="Better HR Cloud-based HR Management Platform"
       tags={[
-        { icon: TabletSmartphone, label: "Web + Mobile Apps" },
-        { icon: Globe, label: "HRTech / Payroll Management" },
-        { icon: Clock, label: "Founding phase" },
+        { icon: <TabletSmartphone className="size-4" />, label: "Web + Mobile Apps" },
+        { icon: <Globe className="size-4" />, label: "HRTech / Payroll Management" },
+        { icon: <Clock className="size-4" />, label: "Founding phase" },
       ]}
       liveUrl="https://betterhr.com/"
       thumbnail={{ src: betterhrThumbnailAsset.src, width: 1488, height: 1050 }}

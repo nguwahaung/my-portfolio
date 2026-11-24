@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import wctAsset from "../../public/wct.png";
 import wctThumbnailAsset from "../../public/wct/thumbnail.png";
@@ -25,9 +23,9 @@ export function WctPage() {
       coverImage={wctAsset.src}
       title="WCT Pay Crypto–Fiat Payment Dashboard"
       tags={[
-        { icon: TabletSmartphone, label: "Web App" },
-        { icon: Globe, label: "Fintech / Cross-Border Settlements" },
-        { icon: Clock, label: "Growth phase" },
+        { icon: <TabletSmartphone className="size-4" />, label: "Web App" },
+        { icon: <Globe className="size-4" />, label: "Fintech / Cross-Border Settlements" },
+        { icon: <Clock className="size-4" />, label: "Growth phase" },
       ]}
       liveUrl="https://www.wctpay.com/"
       thumbnail={{ src: wctThumbnailAsset.src, width: 1488, height: 1050 }}

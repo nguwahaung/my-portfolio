@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import uCoverAsset from "../../public/u-cover.png";
 import unilinksThumbnailAsset from "../../public/unilinks/thumbnail.png";
@@ -25,9 +23,9 @@ export function UniLinksPage() {
       coverImage={uCoverAsset.src}
       title="UniLinks All-in-One Study Abroad Platform"
       tags={[
-        { icon: TabletSmartphone, label: "Web App" },
-        { icon: Globe, label: "EdTech / Study Abroad Consulting" },
-        { icon: Clock, label: "Founding → Growth phase" },
+        { icon: <TabletSmartphone className="size-4" />, label: "Web App" },
+        { icon: <Globe className="size-4" />, label: "EdTech / Study Abroad Consulting" },
+        { icon: <Clock className="size-4" />, label: "Founding → Growth phase" },
       ]}
       liveUrl="https://unilinks.co/"
       thumbnail={{ src: unilinksThumbnailAsset.src, width: 1488, height: 1050 }}
