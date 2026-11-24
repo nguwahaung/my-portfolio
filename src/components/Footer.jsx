@@ -124,16 +124,21 @@ export function Footer() {
             © {new Date().getFullYear()} {SITE.seoName}. All rights reserved.
           </p>
           <div className="flex justify-center sm:justify-end gap-2">
-            <a
-              href={RESUME_URL}
-              target="_blank"
-              aria-label="Resume"
-              rel="noopener noreferrer"
-              className="focus-inverse inline-flex items-center gap-1.5 text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-secondary focus-visible:text-white px-4 py-1.5 rounded-full"
+            <Button
+              variant="menu"
+              className="h-auto gap-1.5 rounded-full border-0 bg-transparent px-4 py-1.5 text-sm font-normal text-secondary transition-colors duration-150"
+              asChild
             >
-              Resume
-              <ExternalLink className="size-3.5" aria-hidden="true" />
-            </a>
+              <a
+                href={RESUME_URL}
+                target="_blank"
+                aria-label="Resume"
+                rel="noopener noreferrer"
+              >
+                Resume
+                <ExternalLink className="size-3.5" aria-hidden="true" />
+              </a>
+            </Button>
             <Link
               href="/#portfolio"
               className="focus-inverse text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-secondary focus-visible:text-white px-4 py-1.5 rounded-full"
