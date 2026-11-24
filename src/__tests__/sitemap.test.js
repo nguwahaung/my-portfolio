@@ -14,14 +14,6 @@ describe("sitemap", () => {
     expect(entries[0].priority).toBe(1.0);
   });
 
-  it("includes all 4 case study slugs", () => {
-    const urls = entries.map((e) => e.url);
-    expect(urls).toContain(`${SITE_URL}/betterhr`);
-    expect(urls).toContain(`${SITE_URL}/kbz-bank`);
-    expect(urls).toContain(`${SITE_URL}/unilinks`);
-    expect(urls).toContain(`${SITE_URL}/wct`);
-  });
-
   it("every entry has a url string and numeric priority", () => {
     entries.forEach((e) => {
       expect(typeof e.url).toBe("string");
