@@ -23,7 +23,7 @@ const navItems = [
 const sectionIds = navItems.map(({ href }) => href.slice(1));
 
 // The pill beside the logo: Menu on home, Back or Home elsewhere.
-const pillControl = "rounded-full px-5 py-2 text-sm font-medium bg-gray-100 hover:bg-gray-200";
+const pillControl = "rounded-full px-5 py-2 text-sm font-medium";
 
 function MenuPanel({ children, ...props }) {
   const isPresent = useIsPresent();
@@ -173,7 +173,7 @@ export function Header() {
           ) : navigation?.previous ? (
             <Button
               type="button"
-              variant="chip"
+              variant="navigation"
               onClick={navigation.goBack}
               className={cn(pillControl, "h-9")}
             >
@@ -182,7 +182,7 @@ export function Header() {
           ) : (
             <Button
               asChild
-              variant="chip"
+              variant="navigation"
               className={cn(pillControl, "h-9 transition-colors")}
             >
               <Link href="/">Home</Link>
