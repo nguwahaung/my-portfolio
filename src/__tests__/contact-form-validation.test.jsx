@@ -138,12 +138,14 @@ describe("Contact form validation", () => {
     render(<ContactPageClient />);
     await setField(user, "Your Name", "Charm");
     await setField(user, "Email Address", "valid@example.com");
-    await setField(user, "Message", "Short");
+    await setField(user, "Message", " 123456789 ");
     await submitForm(user);
     expect(screen.getByText("Write at least 10 characters in your message.")).toBeInTheDocument();
     expect(screen.getByLabelText("Message")).toHaveFocus();
     expect(screen.getByLabelText("Message")).toHaveAttribute("aria-invalid", "true");
     expect(screen.getByLabelText("Message")).toHaveAccessibleDescription("Write at least 10 characters in your message.");
+    expect(captcha.execute).not.toHaveBeenCalled();
+    expect(emailjs.send).not.toHaveBeenCalled();
   });
 
   it("clears error when user corrects input after a validation failure", async () => {
@@ -181,13 +183,13 @@ describe("Contact form validation", () => {
   it("calls EmailJS with correct parameters on successful submission", async () => {
     render(<ContactPageClient />);
     await setField(user, "Your Name", "Charm Test");
-    await setField(user, "Email Address", "charm@example.com");
-    await setField(user, "Message", "This is a long enough test message");
+    await setField(user, "Email Address", " charm@example.com ");
+    await setField(user, "Message", " 1234567890 ");
     await submitForm(user);
     expect(emailjs.send).toHaveBeenCalledWith(
       "service_tgrxl4a",
       "template_h13x2qw",
-      { from_name: "Charm Test", from_email: "charm@example.com", message: "This is a long enough test message", "g-recaptcha-response": "test-captcha-token" },
+      { from_name: "Charm Test", from_email: "charm@example.com", message: "1234567890", "g-recaptcha-response": "test-captcha-token" },
       "cXgAIzNSkZVXYkXyE"
     );
   });
