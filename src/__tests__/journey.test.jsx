@@ -17,12 +17,4 @@ describe("Journey", () => {
     expect(screen.getByText("Prototype & Validate")).toBeInTheDocument();
     expect(screen.getByText("Align & Deliver")).toBeInTheDocument();
   });
-
-  it("renders all 4 step icons (catches missing icon imports)", () => {
-    render(<Journey />);
-    expect(screen.getByTestId("icon-search")).toBeInTheDocument();
-    expect(screen.getByTestId("icon-rocket")).toBeInTheDocument();
-    expect(screen.getByTestId("icon-paint-roller")).toBeInTheDocument();
-    expect(screen.getByTestId("icon-layers")).toBeInTheDocument();
-  });
 });

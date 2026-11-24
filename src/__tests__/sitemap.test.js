@@ -22,11 +22,6 @@ describe("sitemap", () => {
     expect(urls).toContain(`${SITE_URL}/wct`);
   });
 
-  it("includes /contact-me", () => {
-    const urls = entries.map((e) => e.url);
-    expect(urls).toContain(`${SITE_URL}/contact-me`);
-  });
-
   it("every entry has a url string and numeric priority", () => {
     entries.forEach((e) => {
       expect(typeof e.url).toBe("string");

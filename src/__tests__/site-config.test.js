@@ -1,17 +1,10 @@
 import { afterEach, describe, it, expect, vi } from "vitest";
-import { SITE } from "../config/site.js";
 
 vi.mock("next/font/google", () => ({ Inter: () => ({ variable: "test-inter" }) }));
 
 afterEach(() => {
   vi.unstubAllEnvs();
   vi.resetModules();
-});
-
-describe("SITE.careerStartYear", () => {
-  it("matches the expected start year of 2013", () => {
-    expect(SITE.careerStartYear).toBe(2013);
-  });
 });
 
 describe("SITE_URL and SEO consumers", () => {

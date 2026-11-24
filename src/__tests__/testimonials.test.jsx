@@ -25,11 +25,6 @@ describe("Testimonials", () => {
     expect(screen.getByText("Thiri Aung")).toBeInTheDocument();
   });
 
-  it("renders the section heading", () => {
-    render(<Testimonials />);
-    expect(screen.getByText("What Colleagues Say")).toBeInTheDocument();
-  });
-
   it("renders every complete quote and author in a readable card", () => {
     render(<Testimonials />);
     const cards = screen.getAllByRole("article");

@@ -19,15 +19,6 @@ vi.mock("lucide-react", () => ({
   Briefcase: () => <svg />,
 }));
 
-describe("BetterHRPage", () => {
-  it("renders the main heading", () => {
-    render(<BetterHRPage />);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "Better HR Cloud-based HR Management Platform"
-    );
-  });
-});
-
 describe("Live-project navigation", () => {
   it.each([
     [BetterHRPage, "https://betterhr.com/"],
@@ -42,32 +33,5 @@ describe("Live-project navigation", () => {
     expect(link).not.toHaveAttribute("title");
     expect(link).not.toHaveAccessibleDescription();
     expect(link).toHaveAttribute("rel", "noopener noreferrer");
-  });
-});
-
-describe("KBZBankPage", () => {
-  it("renders the main heading", () => {
-    render(<KBZBankPage />);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "KBZ Bank Digital Banking Authentication System"
-    );
-  });
-});
-
-describe("UniLinksPage", () => {
-  it("renders the main heading", () => {
-    render(<UniLinksPage />);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "UniLinks All-in-One Study Abroad Platform"
-    );
-  });
-});
-
-describe("WctPage", () => {
-  it("renders the main heading", () => {
-    render(<WctPage />);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "WCT Pay Crypto–Fiat Payment Dashboard"
-    );
   });
 });

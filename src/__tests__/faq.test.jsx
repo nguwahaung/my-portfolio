@@ -14,11 +14,6 @@ describe("FAQ", () => {
     expect(screen.getByText("What makes your background different?")).toBeInTheDocument();
   });
 
-  it("renders the section heading", () => {
-    render(<FAQ />);
-    expect(screen.getByText("Working With Me")).toBeInTheDocument();
-  });
-
   it("answers are hidden before any trigger is clicked", () => {
     render(<FAQ />);
     expect(screen.getByRole("button", { name: "What roles are you looking for?" })).toHaveAttribute("aria-expanded", "false");

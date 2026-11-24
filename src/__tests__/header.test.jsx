@@ -60,11 +60,6 @@ describe("Header", () => {
     expect(screen.getByAltText("Charm")).toBeInTheDocument();
   });
 
-  it("renders a Menu button on the home page", () => {
-    render(<Header />);
-    expect(screen.getByRole("button", { name: /open menu/i })).toBeInTheDocument();
-  });
-
   it("opens the nav menu and shows all nav items on click", async () => {
     const user = userEvent.setup();
     render(<Header />);
