@@ -36,11 +36,20 @@
       "reason": "Current resize coverage checks overflowing content only; removing the zero clamp would allow negative travel for short content without failing a test.",
       "action": "improve",
       "layer": "component integration",
-      "state": "open",
+      "state": "resolved",
       "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842",
       "tests": [
         "src/__tests__/testimonial-scroll.test.jsx::restores the desktop viewport and measures the full content travel"
-      ]
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": ["src/__tests__/testimonial-scroll.test.jsx::restores the desktop viewport and measures the full content travel"],
+        "method": "runtime",
+        "outcome": "The resize fixture verifies overflowing and short content, zero-clamped section extent and observer cleanup. Final suite: 195 tests passed in 29 files.",
+        "commit": "6707940c538b8e0f12a7f632115447aed33991a1",
+        "command": "npm test",
+        "scope": "Vitest/jsdom with synthetic ResizeObserver heights; no browser scroll or visual claim."
+      }
     },
     {
       "id": "g-319cc0b0-d064-41f0-889a-3563aa6680a6",
@@ -93,8 +102,18 @@
       "reason": "The remaining named card destinations and integration assertions already require all four sitemap URLs at the same test layer.",
       "action": "remove",
       "layer": "unit",
-      "state": "open",
-      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842"
+      "state": "resolved",
+      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842",
+      "tests": ["src/__tests__/case-study-routes.test.jsx::connects every visible case card to a generated route and sitemap entry", "src/__tests__/portfolio.test.jsx::each card links to the correct slug"],
+      "closure": {
+        "reason": "equivalent-protection",
+        "refs": ["src/__tests__/case-study-routes.test.jsx::connects every visible case card to a generated route and sitemap entry", "src/__tests__/portfolio.test.jsx::each card links to the correct slug"],
+        "method": "runtime",
+        "outcome": "Removed includes all 4 case study slugs; retained independently named destinations plus generated-route/sitemap linkage. Focused 24 tests passed; final suite 195 passed in 29 files.",
+        "commit": "6707940c538b8e0f12a7f632115447aed33991a1",
+        "command": "npm test",
+        "scope": "Complete Vitest/jsdom suite including remaining sitemap, route and portfolio contracts."
+      }
     },
     {
       "id": "g-3b09eb7f-617f-42e3-b92d-728e258d73d6",
@@ -209,8 +228,18 @@
       "reason": "The falsy-input case already asserts that both ordinary class strings survive in order; the separate two-string case adds no distinct required guarantee.",
       "action": "remove",
       "layer": "unit",
-      "state": "open",
-      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842"
+      "state": "resolved",
+      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842",
+      "tests": ["src/__tests__/utils.test.js::drops falsy values", "src/__tests__/utils.test.js::resolves Tailwind conflicts — last class wins"],
+      "closure": {
+        "reason": "equivalent-protection",
+        "refs": ["src/__tests__/utils.test.js::drops falsy values", "src/__tests__/utils.test.js::resolves Tailwind conflicts — last class wins"],
+        "method": "runtime",
+        "outcome": "Removed merges class names; remaining cases preserve ordered ordinary classes, falsy filtering and Tailwind conflict resolution. Four focused tests passed; final suite 195 passed in 29 files.",
+        "commit": "6707940c538b8e0f12a7f632115447aed33991a1",
+        "command": "npm test",
+        "scope": "Complete Vitest/jsdom suite, including the remaining utility cases."
+      }
     },
     {
       "id": "g-76988325-e6b1-4d48-a737-cf79557e5c0a",
@@ -435,8 +464,18 @@
       "reason": "Header and provider are only tested separately against a mocked contract; a shape mismatch would go unnoticed.",
       "action": "add",
       "layer": "integration",
-      "state": "open",
-      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842"
+      "state": "resolved",
+      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842",
+      "tests": ["src/__tests__/header-navigation.test.jsx::changes Home to Back after navigation and restores the originating control"],
+      "closure": {
+        "reason": "tested",
+        "refs": ["src/__tests__/header-navigation.test.jsx::changes Home to Back after navigation and restores the originating control"],
+        "method": "runtime",
+        "outcome": "The real Header/provider journey verifies Home, Back after internal navigation, a -1 history offset, restored focus and scroll position. Focused 36 tests passed; final suite 195 passed in 29 files.",
+        "commit": "6707940c538b8e0f12a7f632115447aed33991a1",
+        "command": "npm test",
+        "scope": "Vitest/jsdom with real Header/provider/Button; Next URL transitions and browser history movement simulated at external boundaries."
+      }
     },
     {
       "id": "g-a5b76e0c-0512-40a5-bd4a-1950e03691bf",
@@ -544,8 +583,18 @@
       "reason": "The label-only assertion passes if all rendered Star children are removed.",
       "action": "improve",
       "layer": "component integration",
-      "state": "open",
-      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842"
+      "state": "resolved",
+      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842",
+      "tests": ["src/__tests__/testimonials.test.jsx::renders every complete quote and author in a readable card"],
+      "closure": {
+        "reason": "tested",
+        "refs": ["src/__tests__/testimonials.test.jsx::renders every complete quote and author in a readable card"],
+        "method": "runtime",
+        "outcome": "Each accessible rating contains exactly five real Lucide Star SVGs; existing author-card and final-quote assertions remain. Final suite 195 passed in 29 files.",
+        "commit": "6707940c538b8e0f12a7f632115447aed33991a1",
+        "command": "npm test",
+        "scope": "Vitest/jsdom rendered testimonial cards with real Lucide icons; no screenshot or CSS appearance certification."
+      }
     },
     {
       "id": "g-acf1a33b-88fa-4783-97de-3187b90282da",
@@ -556,8 +605,18 @@
       "reason": "Existing five-character rejection and long unpadded success fixtures miss off-by-one and trim regressions.",
       "action": "improve",
       "layer": "component integration",
-      "state": "open",
-      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842"
+      "state": "resolved",
+      "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842",
+      "tests": ["src/__tests__/contact-form-validation.test.jsx::immediately shows error when message is too short", "src/__tests__/contact-form-validation.test.jsx::calls EmailJS with correct parameters on successful submission"],
+      "closure": {
+        "reason": "tested",
+        "refs": ["src/__tests__/contact-form-validation.test.jsx::immediately shows error when message is too short", "src/__tests__/contact-form-validation.test.jsx::calls EmailJS with correct parameters on successful submission"],
+        "method": "runtime",
+        "outcome": "Padded nine-character message rejects before verification or send; padded ten-character message accepts with clean email/message payload. Focused 21 tests passed; final suite 195 passed in 29 files.",
+        "commit": "6707940c538b8e0f12a7f632115447aed33991a1",
+        "command": "npm test",
+        "scope": "Vitest/jsdom form with EmailJS and CAPTCHA mocked; email input also performs browser-native whitespace sanitization. No live delivery claim."
+      }
     },
     {
       "id": "g-b12c1173-814f-47af-9c94-274ddca7cb18",
@@ -732,12 +791,21 @@
       "action": "improve",
       "layer": "integration",
       "id": "g-bd508a0b-0673-4c0d-9612-4b1186de888a",
-      "state": "open",
+      "state": "resolved",
       "assessed_commit": "f220be3a2380caa0a73e3e77ebaf1f4f565f4842",
       "tests": [
         "src/__tests__/skip-link.test.jsx::targets #main-content",
         "src/__tests__/skip-link.test.jsx::has exactly one #main-content landmark on %s"
-      ]
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": ["src/__tests__/skip-link.test.jsx::targets #main-content", "src/__tests__/skip-link.test.jsx::has exactly one #main-content landmark on %s"],
+        "method": "runtime",
+        "outcome": "The existing four shell cases now count all main elements as well as the unique skip target. Focused five tests passed; final suite 195 passed in 29 files.",
+        "commit": "6707940c538b8e0f12a7f632115447aed33991a1",
+        "command": "npm test",
+        "scope": "Vitest/jsdom home, case-study, contact and not-found shells plus static layout skip link; no full browser accessibility audit."
+      }
     },
     {
       "id": "g-c208a501-6517-4238-8762-75c5e3e46cb1",
