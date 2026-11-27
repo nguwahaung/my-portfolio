@@ -71,6 +71,13 @@
     outline: 2px solid var(--ring);
     outline-offset: 0;
   }
+  :where(input, textarea, select)[aria-invalid="true"]:not(:focus) {
+    outline: 1px solid var(--destructive);
+    outline-offset: 0;
+  }
+  :where(input, textarea, select)[aria-invalid="true"]:focus {
+    outline-color: var(--destructive);
+  }
   /* Dark controls need a light stroke inside the fill, without an outside gap. */
   .focus-inverse:focus-visible {
     outline-color: var(--primary-foreground);
